@@ -146,7 +146,7 @@ class StockPicking(models.Model):
         'move_lines.quantity_done',
         )
     def _compute_declared_value(self):
-        for rec in self.filtered('automatic_declare_value'):
+        for rec in self.filtered(lambda p: p.automatic_declare_value and p.state not in ['done', 'cancel']):
             done_value = 0.0
             picking_value = 0.0
             inmediate_transfer = True
@@ -177,9 +177,9 @@ class StockPicking(models.Model):
                                 move_line.quantity_done,
                                 order_line.product_uom)
                     picking_value += (order_line.price_reduce_taxexcl *
-                                      so_product_qty)
+                                    so_product_qty)
                     done_value += (order_line.price_reduce_taxexcl *
-                                   so_qty_done)
+                                so_qty_done)
                 elif rec.picking_type_id.pricelist_id:
                     pricelist = rec.picking_type_id.pricelist_id
                     price = rec.picking_type_id.pricelist_id.with_context(
@@ -232,3 +232,4 @@ class StockPicking(models.Model):
                     rec.sale_id.date_order or fields.Date.today())
             else:
                 rec.declared_value = declared_value
+
