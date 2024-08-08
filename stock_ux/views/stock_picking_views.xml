@@ -2,17 +2,19 @@
     <record id="view_picking_form" model="ir.ui.view">
         <field name="name">stock.picking.form.inherit</field>
         <field name="model">stock.picking</field>
+        <field name="priority">99</field>
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
             <button name="button_validate" position="after">
                 <field name="block_manual_lines" invisible="1"/>
                 <button name="new_force_availability" string="Force Availability" invisible="block_manual_lines or state not in ('confirmed', 'waiting', 'assigned') or not is_locked" type="object"/>
             </button>
-            <xpath expr="//button[@name='button_validate']" position="attributes">
+             <xpath expr="//header/button[@name='button_validate'][1]" position="attributes">
                 <attribute name="invisible">state in ('draft', 'confirmed', 'done', 'cancel') or picking_type_id.block_additional_quantity and state in ('draft', 'waiting', 'confirmed')</attribute>
             </xpath>
-            <xpath expr="//button[@name='button_validate'][1]" position="attributes">
-                <attribute name="invisible">state in ('draft', 'confirmed', 'done', 'cancel') or picking_type_id.block_additional_quantity and state in ('draft', 'waiting', 'confirmed')</attribute>
+            <!-- Modificar el segundo button_validate -->
+            <xpath expr="//header/button[@name='button_validate'][2]" position="attributes">
+                <attribute name="invisible">True</attribute> <!-- Dejamos invisible ya que hay 2 botones para validar -->
             </xpath>
             <field name="partner_id" position="attributes">
                 <attribute name="readonly"/>
@@ -101,7 +103,8 @@
         </field>
     </record>
 
-    <menuitem id="all_picking" name="Transferencias" parent="stock.menu_stock_transfers" sequence="20" action="action_picking_tree_all" groups="stock.group_stock_manager,stock.group_stock_user"/>
+    <menuitem id="all_picking" name="Todas las transferencias" parent="stock.menu_stock_transfers" sequence="1" action="action_picking_tree_all" groups="stock.group_stock_manager,stock.group_stock_user"/>
+
 
     <record id="stock.action_stock_move_tree_all" model="ir.actions.act_window.view">
         <field name="sequence" eval="1"/>
