@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
-        <record id="view_move_line_form" model="ir.ui.view">
+    <record id="view_move_line_form" model="ir.ui.view">
         <field name="name">stock.move.line.form</field>
         <field name="model">stock.move.line</field>
         <field name="inherit_id" ref="stock.view_move_line_form"/>
@@ -32,16 +32,16 @@
             </filter>
             <filter name="by_state" position="after">
                 <filter string="Product" name="product_id" context="{'group_by':'product_id'}"/>
-                <filter string="Picking" name="picking"  context="{'group_by':'picking_id'}"/>
+                <filter string="Picking" name="picking" context="{'group_by':'picking_id'}"/>
                 <!-- Si queremos agregar group by estos campos habria que hacerlos store o hacer una vista sql -->
-                <filter string="Picking Type" name="picking_type"  context="{'group_by':'picking_type_id'}"/>
-                <!-- <filter string="Picking Partner" name="picking_partner_id"  context="{'group_by':'picking_partner_id'}"/> -->
+                <filter string="Picking Type" name="picking_type" context="{'group_by':'picking_type_id'}"/>
+                <!-- <filter string="Picking Partner" name="picking_partner_id" context="{'group_by':'picking_partner_id'}"/> -->
             </filter>
             <filter name="by_state" position="after">
-                <filter string="Picking" name="picking"  context="{'group_by':'picking_id'}"/>
+                <filter string="Picking" name="picking" context="{'group_by':'picking_id'}"/>
                 <!-- Si queremos agregar group by estos campos habria que hacerlos store o hacer una vista sql -->
-                <filter string="Picking Type" name="picking_type"  context="{'group_by':'picking_type_id'}"/>
-                <!-- <filter string="Picking Partner" name="picking_partner_id"  context="{'group_by':'picking_partner_id'}"/> -->
+                <filter string="Picking Type" name="picking_type" context="{'group_by':'picking_type_id'}"/>
+                <!-- <filter string="Picking Partner" name="picking_partner_id" context="{'group_by':'picking_partner_id'}"/> -->
             </filter>
         </field>
     </record>
@@ -95,12 +95,15 @@
                 <field name="product_uom_id" position="move"/>
                 <field name="lots_visible" column_invisible="True"/>
                 <field name="owner_id" readonly="1" optional="hide"/>
+                <field name="return_lot_ids" invisible="1"/>
             </field>
+            
             <field name="lot_id" position="attributes">
                 <attribute name="invisible">not lots_visible</attribute>
                 <attribute name="domain">[('product_id', '=', product_id), ('company_id', '=', company_id)]</attribute>
                 <attribute name="options">{'create':True, 'create_edit':True}</attribute>
                 <attribute name="context">{'default_product_id': product_id, 'active_picking_id': picking_id, 'default_company_id':company_id, 'display_complete':True}</attribute>
+                <attribute name="context">{'return_lot_ids':return_lot_ids}</attribute>
             </field>
             <!-- <field name="quantity" position="after">
                 <button name="set_all_done" title="Set all Done" type="object" icon="fa-check" invisible="state not in ('confirmed', 'assigned', 'waiting', 'partially_available')"/>
@@ -109,24 +112,24 @@
     </record>
 
     <record id="view_stock_move_line_detailed_operation_tree" model="ir.ui.view">
-            <field name="name">stock.move.line.operations.tree</field>
-            <field name="model">stock.move.line</field>
-            <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree"/>
-            <field name="arch" type="xml">
-                <field name="product_id" position="after">
-                    <field name="description_picking" optional="hide"/>
-                    <field name="origin_description" string="Descripción de origen" optional="hide"/>
-                </field>
-                <!-- <field name="quantity" position="after">
+        <field name="name">stock.move.line.operations.tree</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="description_picking" optional="hide"/>
+                <field name="origin_description" string="Descripción de origen" optional="hide"/>
+            </field>
+            <!-- <field name="quantity" position="after">
                     <button name="set_all_done" title="Set all Done" type="object" icon="fa-check" invisible="state not in ('confirmed', 'assigned', 'waiting', 'partially_available')"/>
                 </field> -->
-                <!-- for compatibility with web_m2x_options we force allowing create lots -->
-                <field name="lot_id" position="attributes">
-                    <attribute name="options">{'create':True, 'create_edit':True}</attribute>
-                    <attribute name="context">{'default_product_id': product_id, 'default_company_id': company_id, 'active_picking_id': picking_id, 'display_complete':True}</attribute>
-                </field>
+            <!-- for compatibility with web_m2x_options we force allowing create lots -->
+            <field name="lot_id" position="attributes">
+                <attribute name="options">{'create':True, 'create_edit':True}</attribute>
+                <attribute name="context">{'default_product_id': product_id, 'default_company_id': company_id, 'active_picking_id': picking_id, 'display_complete':True}</attribute>
             </field>
-        </record>
+        </field>
+    </record>
 
     <record id="view_stock_move_line_operation_tree" model="ir.ui.view">
         <field name="name">stock.move.line.tree</field>
@@ -145,6 +148,13 @@
                             'default_product_id': parent.product_id,
                             'display_complete':True
                         }</attribute>
+            </field>
+            <field name="lot_id" position="before">
+                <field name="return_lot_ids" invisible="1"/>
+            </field>
+            <field name="lot_id" position="attributes">
+                <attribute name="context">{'return_lot_ids':return_lot_ids}</attribute>
+                <!-- <attribute name="options">{'no_create_edit': True, 'no_create':True, 'no_open':True}</attribute> -->
             </field>
         </field>
     </record>
@@ -179,5 +189,20 @@ records.filtered(lambda x: x.state not in ['draft', 'done', 'cancel']).write({'q
     <!-- <record id="stock.stock_move_line_menu" model="ir.ui.menu">
         <field name="name">Products Moves Detailed</field>
     </record> -->
+
+    <record id="view_move_line_tree_personalization_nosuggest" model="ir.ui.view">
+        <field name="name">Cambio en dominio de lote</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="lot_id" position="before">
+                <field name="return_lot_ids" invisible="1"/>
+            </field>
+            <field name="lot_id" position="attributes">
+                <attribute name="context">{'return_lot_ids':return_lot_ids}</attribute>
+                <!-- <attribute name="options">{'no_create_edit': True, 'no_create':True, 'no_open':True}</attribute> -->
+            </field>
+        </field>
+    </record>
 
 </odoo>

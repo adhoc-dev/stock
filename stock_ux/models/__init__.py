@@ -12,3 +12,6 @@ from . import stock_move_line
 from . import stock_picking_type
 from . import res_config_settings
 from . import stock_rule
+from . import return_picking_lot
+from . import stock_process
+from . import stock_production_lot

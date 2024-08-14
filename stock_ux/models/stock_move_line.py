@@ -36,6 +36,8 @@ class StockMoveLine(models.Model):
         related="move_id.origin_description",
     )
 
+    return_lot_ids = fields.Many2many(related="picking_id.return_lot_ids")
+
     # def set_all_done(self):
     #     precision = self.env['decimal.precision'].precision_get(
     #         'Product Unit of Measure')
