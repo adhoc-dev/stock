@@ -18,7 +18,7 @@
 #
 ##############################################################################
 {
-    'name': 'Stock UX',
+    'name': 'Stock_Barcode_UX',
     'version': "17.0.1.4.0",
     'category': 'Warehouse Management',
     'sequence': 14,
