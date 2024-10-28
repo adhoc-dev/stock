@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-29 15:06+0000\n"
+"POT-Creation-Date: 2024-09-16 18:14+0000\n"
 "PO-Revision-Date: 2024-01-29 15:06+0000\n"
 "Last-Translator: Juan José Scarafía <scarafia.juanjose@gmail.com>, 2024\n"
 "Language-Team: Spanish (https://app.transifex.com/adhoc/teams/46451/es/)\n"
@@ -34,6 +34,22 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: stock_orderpoint_manual_update
+#: model:ir.model.fields,help:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint__rotation
+msgid ""
+"Cantidades entregadas a clientes en los últimos 120 días dividido por 4 para"
+" mensualizar (restadas devoluciones)."
+msgstr ""
+
+#. module: stock_orderpoint_manual_update
+#: model:ir.model.fields,help:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint__warehouse_rotation
+msgid ""
+"Cantidades entregadas desde este almacen a clientes en los últimos 120 días "
+"dividido por 4 para mensualizar(restadas devoluciones)."
+msgstr ""
+"Cantidades entregadas desde este almacén a clientes en los últimos 120 días "
+"dividido por 4 para mensualizar(restadas devoluciones)."
+
+#. module: stock_orderpoint_manual_update
 #: model:ir.model.fields,field_description:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint_wizard__company_id
 msgid "Company"
 msgstr "Compañía"
@@ -54,19 +70,37 @@ msgid "Created on"
 msgstr "Creado el"
 
 #. module: stock_orderpoint_manual_update
+#: model:ir.model.fields,help:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint__rotation_stdev
+msgid ""
+"Desvío estandar de las cantidades entregas a clientes en los últimos 120 "
+"días."
+msgstr ""
+"Desvío estándar de las cantidades entregas a clientes en los últimos 120 "
+"días."
+
+#. module: stock_orderpoint_manual_update
+#: model:ir.model.fields,help:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint__warehouse_rotation_stdev
+msgid ""
+"Desvío estandar de las cantidades entregas desde este almacen a clientes en "
+"los últimos 120 días."
+msgstr ""
+"Desvío estándar de las cantidades entregas desde este almacén a clientes en "
+"los últimos 120 días."
+
+#. module: stock_orderpoint_manual_update
 #: model:ir.model.fields,field_description:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint_wizard__display_name
 msgid "Display Name"
 msgstr "Nombre Mostrado"
 
 #. module: stock_orderpoint_manual_update
+#: model:ir.model.fields,field_description:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint_wizard__filter_by_main_supplier
+msgid "Filter by Main Vendor"
+msgstr ""
+
+#. module: stock_orderpoint_manual_update
 #: model:ir.model.fields,field_description:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint_wizard__id
 msgid "ID"
 msgstr "ID (identificación)"
-
-#. module: stock_orderpoint_manual_update
-#: model:ir.model,name:stock_orderpoint_manual_update.model_stock_location
-msgid "Inventory Locations"
-msgstr "Ubicaciones de inventario"
 
 #. module: stock_orderpoint_manual_update
 #: model:ir.model.fields,field_description:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint_wizard____last_update
@@ -124,6 +158,21 @@ msgid "Replenishment Filter Wizard"
 msgstr ""
 
 #. module: stock_orderpoint_manual_update
+#: model:ir.model.fields,field_description:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint__reviewed
+msgid "Reviewed"
+msgstr "Revisado"
+
+#. module: stock_orderpoint_manual_update
+#: model:ir.model.fields,field_description:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint__rotation
+msgid "Rotation"
+msgstr ""
+
+#. module: stock_orderpoint_manual_update
+#: model:ir.model.fields,field_description:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint__rotation_stdev
+msgid "Rotation Stdev"
+msgstr ""
+
+#. module: stock_orderpoint_manual_update
 #: model:ir.model,name:stock_orderpoint_manual_update.model_stock_warehouse_orderpoint_wizard
 msgid "Stock Warehouse Orderpoint Wizard"
 msgstr ""
@@ -134,6 +183,11 @@ msgid "Vendor"
 msgstr "Proveedor"
 
 #. module: stock_orderpoint_manual_update
-#: model:ir.model.fields,field_description:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint__reviewed
-msgid "Reviewed"
-msgstr "Revisado"
+#: model:ir.model.fields,field_description:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint__warehouse_rotation
+msgid "Warehouse Rotation"
+msgstr "Rotación de Almacén"
+
+#. module: stock_orderpoint_manual_update
+#: model:ir.model.fields,field_description:stock_orderpoint_manual_update.field_stock_warehouse_orderpoint__warehouse_rotation_stdev
+msgid "Warehouse Rotation Stdev"
+msgstr ""

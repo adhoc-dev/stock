@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-18 15:27+0000\n"
+"POT-Creation-Date: 2024-08-28 18:57+0000\n"
 "PO-Revision-Date: 2023-04-18 15:27+0000\n"
 "Last-Translator: Juan José Scarafía <scarafia.juanjose@gmail.com>, 2023\n"
 "Language-Team: Spanish (https://app.transifex.com/adhoc/teams/46451/es/)\n"
@@ -81,16 +81,6 @@ msgstr "Orden"
 #: model_terms:ir.ui.view,arch_db:stock_request_ux.view_move_form
 msgid "Request Orders"
 msgstr "Pedidos de Existencias"
-
-#. module: stock_request_ux
-#: model:ir.model.fields,field_description:stock_request_ux.field_stock_request_order__route_id
-msgid "Route"
-msgstr "Ruta"
-
-#. module: stock_request_ux
-#: model:ir.model.fields,field_description:stock_request_ux.field_stock_request_order__route_ids
-msgid "Routes"
-msgstr ""
 
 #. module: stock_request_ux
 #: model_terms:ir.ui.view,arch_db:stock_request_ux.stock_request_order_form
