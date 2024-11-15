@@ -13,7 +13,8 @@ class StockPrintStockVoucher(models.TransientModel):
         if self.book_id.lines_per_voucher != 0:
             return {
                 'actions': [
-                    {'type': 'ir.actions.act_window_close'},
+                    {'type': 'ir.actions.client',
+                    'tag': 'reload', },
                         self.with_context(assign=True).do_print_voucher(),
                 ],
                 'type': 'ir.actions.act_multi'
