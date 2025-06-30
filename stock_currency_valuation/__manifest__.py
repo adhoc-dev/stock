@@ -1,6 +1,6 @@
 {
     'name': 'Stock currency valuation',
-    'version': "16.0.2.1.0",
+    'version': "16.0.2.2.0",
     'category': 'Warehouse Management',
     'sequence': 14,
     'summary': '',
@@ -14,12 +14,14 @@
         'product_replenishment_cost',
     ],
     'data': [
+        'security/ir.model.access.csv',
         'views/product_category.xml',
         'views/stock_picking.xml',
         'views/stock_landed_cost_views.xml',
         'views/product.xml',
         'views/stock_valuation_layer.xml',
         'wizard/stock_valuation_layer_revaluation_views.xml',
+        'wizard/stock_valuation_layer_recompute.xml',
     ],
     'installable': True,
     'auto_install': False,
