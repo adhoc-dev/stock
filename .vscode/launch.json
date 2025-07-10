@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Python:Odoo",
+            "type": "debugpy",
+            "request": "launch",
+            "python": "/home/odoo/venv/bin/python",
+            "console":"integratedTerminal",
+            "program": "/home/odoo/venv/bin/odoo",
+            "args": [
+            ],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "ODOO_LOGGING_JSON": "0",
+            }
+        }
+    ]
+}

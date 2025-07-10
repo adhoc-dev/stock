@@ -1,0 +1,78 @@
+{
+    "files.insertFinalNewline": true,
+    "terminal.integrated.cwd": "/home/odoo/custom/repositories",
+    "remote.autoForwardPorts": false,
+    // Ignore files in src directory the workspace
+    "files.watcherExclude": {
+        "/home/odoo/src/**" : true,
+        "/home/odoo/custom/repositories/src/**" : true
+    },
+    "files.exclude": {
+        ".devcontainer": true,
+        //".vscode": true,
+        ".github": true,
+                "*.Dockerfile.dockerignore": true
+    },
+    "search.exclude":{
+            ".devcontainer": true,
+        "dockerfiles": true,
+        // ".vscode": true,
+        ".github": true
+    },
+    // Python Defaults
+    "python.defaultInterpreterPath": "/home/odoo/venv/bin/python",
+    "python.terminal.activateEnvironment": false,
+    // Linting (ruff)
+    "python.linting.enabled": true,
+    "python.linting.ruffEnabled": true,
+    // Default Ruff config
+    "ruff.exclude": [
+        "/home/odoo/src/**"
+    ],
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "never",
+        "source.organizeImports": "never"
+    },
+    // PyLance
+    "python.languageServer": "Pylance",
+    "python.analysis.languageServerMode": "light",
+    "python.analysis.extraPaths": [
+        "/home/odoo/src/odoo",
+        "/home/odoo/src/enterprise",
+        "/home/odoo/src/odoo-module-migrator",
+        "/home/odoo/src/odoo-upgrade",
+        "/home/odoo/src/odooly",
+        "/home/odoo/src/openupgradelib",
+        "/home/odoo/src/upgrade-util"
+    ],
+    // "python.linting.pylintArgs":[],
+    "python.analysis.exclude": [
+        // "**"
+        "/workspace/src/**",
+        "/home/odoo/custom/repositories/src/**"
+    ],
+    "python.analysis.autoSearchPaths": true,
+    "python.analysis.diagnosticMode": "openFilesOnly",
+    "python.analysis.indexing": true,
+    "python.analysis.userFileIndexingLimit": -1,
+    // Spell check
+    "cSpell.diagnosticLevel": "Hint",
+    "cSpell.diagnosticLevelFlaggedWords":   "Hint",
+    // Trailing spaces
+    "trailing-spaces.highlightCurrentLine": true,
+    "trailing-spaces.syntaxIgnore": ["markdown"],
+    // Debugger
+    "debug.toolBarLocation": "commandCenter",
+    "debug.openDebug": "neverOpen",
+    "debug.openExplorerOnEnd": true,
+    "debug.allowBreakpointsEverywhere": true,
+    "debug.hideLauncherWhileDebugging": true,
+    "debugpy.showPythonInlineValues": true,
+    // "debugpy.debugJustMyCode": false # We don't want this
+    // Auto Docstring
+    "autoDocstring.guessTypes": true,
+    "autoDocstring.docstringFormat": "google",
+    "autoDocstring.generateDocstringOnEnter": true
+}
